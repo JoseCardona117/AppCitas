@@ -1,0 +1,22 @@
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  title = 'Mi primer cita';
+  users: any;
+
+  constructor(private hhtp: HttpClient) {}
+
+  ngOnInit(): void {
+    this.hhtp.get('https://localhost:5001/api/users').subscribe({
+      next: (response: any) => this.users = response,
+      error: (err: Error) => console.log(err),
+      complete: () => console.log('Request has completed')
+    });
+  }
+}
