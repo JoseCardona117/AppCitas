@@ -10,10 +10,10 @@ export class AppComponent implements OnInit {
   title = 'Mi primer cita';
   users: any;
 
-  constructor(private hhtp: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.hhtp.get('https://localhost:5001/api/users').subscribe({
+    this.http.get('https://localhost:5001/api/users').subscribe({
       next: (response: any) => this.users = response,
       error: (err: Error) => console.log(err),
       complete: () => console.log('Request has completed')
